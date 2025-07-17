@@ -1,10 +1,12 @@
 package selenium.testcase;
 
+import listeners.MyListeners;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.*;
 import selenium.base.Base;
@@ -14,6 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+@Listeners(MyListeners.class)
 public class RecruitmentCandidates extends Base {
 
     WebDriver driver;
@@ -196,7 +199,7 @@ public class RecruitmentCandidates extends Base {
     }
 
     @Test(priority = 16)
-    public void searchCandidateInvalid() throws InterruptedException {
+    public void searchCandidateInvalid() {
         String messageInvalid = "Invalid";
         candidatesPage.enterCandidateName(prop.getProperty("exceedCharacter"));
         candidatesPage.clickBtnSearch();
